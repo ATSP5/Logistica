@@ -62,3 +62,5 @@ E:\Adam\GitHubLocallReopsitory\Logistica\Logistica\obj\Debug\Logistica.csproj.Co
 E:\Adam\GitHubLocallReopsitory\Logistica\Logistica\obj\Debug\Logistica.csproj.CopyComplete
 E:\Adam\GitHubLocallReopsitory\Logistica\Logistica\obj\Debug\Logistica.exe
 E:\Adam\GitHubLocallReopsitory\Logistica\Logistica\obj\Debug\Logistica.pdb
+E:\Adam\GitHubLocallReopsitory\Logistica\Logistica\obj\Debug\LogInWindow.g.cs
+E:\Adam\GitHubLocallReopsitory\Logistica\Logistica\obj\Debug\LogInWindow.baml

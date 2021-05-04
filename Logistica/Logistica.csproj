@@ -73,7 +73,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LogInWindow.xaml.cs">
+      <DependentUpon>LogInWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserState.cs" />
     <Page Include="ConnectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogInWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -83,7 +91,6 @@
     </Page>
     <Compile Include="APMySQLDBEngine.cs" />
     <Compile Include="APDBEngineAC.cs" />
-    <Compile Include="APMySQLPersonTable.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -133,6 +140,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualResources\play-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualResources\stop-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="play-button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

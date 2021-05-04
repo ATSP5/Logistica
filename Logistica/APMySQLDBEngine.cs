@@ -9,42 +9,78 @@ using System.Windows;
 
 namespace Logistica
 {
-    class APMySQLDBEngine : APDBEngineAC
+    public class APMySQLDBEngine : APDBEngineAC
     {
-        private string connectionString;
         private MySqlConnection mySqlConnection;
-        public APMySQLPersonTable apMySQLPersonTable;
+        MySqlCommand cmd;
 
-        public APMySQLDBEngine(string ConnectionStr) //Default constructor
+        private static APMySQLDBEngine _instance; // Instancja klasy
+
+        public static APMySQLDBEngine GetInstance() // Metoda zwracająca instancję singletonu!!!
         {
-            connectionString = ConnectionStr;
-            apMySQLPersonTable = new APMySQLPersonTable();
+            if(_instance == null)
+            {
+                _instance = new APMySQLDBEngine();
+            }
+            return _instance;
         }
-        public void MySQLConnect()
+
+        private APMySQLDBEngine() //Default constructor
         {
-            Connect();
+            cmd = new MySqlCommand();
+        }
+        public bool MySQLConnect(string _connectionStr)
+        {
+           return Connect(_connectionStr);
         }
         public void MySQLDisconnect()
         {
             Disconnect();
         }
+        public MySqlDataReader Execute(string Querry)
+        {
+            return DBQExecute(Querry);
+        }
         protected override void Disconnect()
         {
-            mySqlConnection.Close();
+            if(mySqlConnection!= null)
+            {
+                mySqlConnection.Close();
+            }
+            
         }
-        protected override void Connect()
+        protected override bool Connect(string ConnectionStr)
         {
-             mySqlConnection = new MySqlConnection(connectionString);
-            apMySQLPersonTable.PassConnectionParamether(mySqlConnection);
+             mySqlConnection = new MySqlConnection(ConnectionStr);
+          
             try
             {
                 mySqlConnection.Open();
+                return true;
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message + " Check ''help'' panel for more details!","Error!");
+                return false;
             }
-            
+        }
+        protected override MySqlDataReader DBQExecute(string querry)
+        {
+            cmd.CommandText = querry;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = mySqlConnection;
+
+            try
+            {
+                MySqlDataReader dr;
+                dr = cmd.ExecuteReader();
+                return dr;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Contact your developer!");
+                return null;
+            }
         }
     }
 }

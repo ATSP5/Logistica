@@ -5,18 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Logistica"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="10000">
                 <MenuItem Header="File">
                     <MenuItem Header="Exit" Name="mIExit" Click="mIExit_Click"/>
                 </MenuItem>
-                <MenuItem Header="Connection" Name="mIConnection">
-                    <MenuItem Header="Connect" Name="mIConnect" Click="mIConnect_Click"/>
+                <MenuItem Header="User" Name="mIUser">
+                    <MenuItem Header="LogIn" Name="mILogIn" Click="mILogIn_Click"/>
+                    <MenuItem Header="LogOut" Name="mILogOut" Click="mILogOut_Click"/>
+                    <MenuItem Header="Register" Name="mIRegister" Click="mIRegister_Click"/>
+                    <MenuItem Header="Unregister" Name="mIUnregister" Click="mIUnregister_Click"/>
                 </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="Show help"></MenuItem>
+                    <MenuItem Header=" About"></MenuItem>
+                </MenuItem>
+                <TextBlock HorizontalAlignment="Stretch">Database connection state:</TextBlock>
+                <Button x:Name="mIConnectionStateButton" Click="mIConnectionStateButton_Click">
+                    <Image Source="VisualResources/play-button.png" Name="mIConnectionStateButtonImage"></Image>
+                </Button>
             </Menu>
-            <DataGrid DockPanel.Dock="Bottom" Name="PokazTuDane"></DataGrid>
+            <TabControl TabStripPlacement="Bottom">
+                <TabItem Header="General">
+                    <Label Content="Content goes A..." />
+                </TabItem>
+                <TabItem Header="Security">
+                    <Label Content="Content goes B..." />
+                </TabItem>
+                <TabItem Header="Details">
+                    <Label Content="Content goes C..." />
+                </TabItem>
+            </TabControl>
         </DockPanel>
         
 
